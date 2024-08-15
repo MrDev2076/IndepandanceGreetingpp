@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon_io/android-chrome-192x192.png" type="image/x-icon">
+    <title>Packetprep - Indepandance Day Celebrations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Grey+Qo&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        #splash-screen {
+            background-image: url('independancelogo.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            filter:contrast(1px);
+            margin: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            font-variation-settings: "wdth" 100;
+        }
+
+        .logo {
+            border-radius: 80%;
+            padding: 120px;
+        }
+
+        #main-content {
+            display: none;
+            padding: 20px;
+            width: 1120px;
+            position: absolute;
+            margin: 50px 0px 0px -320px;
+            line-height: 30px;
+            filter: grayscale(2px);
+            transform: translate(50%, 50%);
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            
+        }
+
+        .blur-background {
+            filter: blur(5px);
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #f4af7d, #a2f4d2);
+            padding: 30px;
+            border-radius: 10px;
+            z-index: 100;
+            display: none;
+            text-align: center;
+            
+        }
+
+        .popup h2 {
+            margin-bottom: 20px;
+        }
+
+        .popup button {
+            margin-top: 10px;
+        }
+
+        .pp{
+            position: absolute;
+            top: 10%;
+            right: 10%;
+        }
+
+        #popupMessage {
+    white-space: pre-line;
+}
+
+        #typing-text {
+            font-size: 72px;
+            background: -webkit-linear-gradient(#f4601b,rgb(234, 182, 85), #005e32);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+                font-family: "Grey Qo", cursive;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+                font-variation-settings: "wdth" 100;
+
+            text-shadow: 2px 2px solid black;
+            margin-left: 400px;
+            line-height: 80px;
+            cursor: progress;
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+    <div id="splash-screen" class="font-noto">
+        <div>
+            <img src="https://packetprep.com/storage/prep/assets/favicon-min.webp" alt="" width="80" class="rounded-3 pp">
+            <h1 id="typing-text" class="text- text-warning text-start">Welcome To <br> &nbsp; The Celebration of <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Independence Day. <br></h1>
+            <h1 id="typing-text"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Proud to be an Indian.. <br></h1>
+        </h1>
+        </div>
+    </div>
+
+    <div id="main-content" class="container bg-gradient bg-dark rounded text-left shadow-lg text-white font-monospace ">
+        
+  <div class="D" style="display: flex;justify-content: space-around;">
+    <div class="d1" style="width: 600px;">
+        <b>On this special day,</b> <br> we remember the sacrifices of those who fought for our freedom and the values that make our nation strong. Let us honor their legacy by celebrating our independence with pride and commitment to our country's progress.
+        <br><br>
+        <b>As we raise our flags high, </b><br>may we continue to cherish the liberty and unity that bind us together as one nation. Here's to the spirit of freedom, the joy of unity, and the promise of a brighter future.
+    </div>
+    <div class="d2" style="padding: 30px;margin: 30px;width: 400px;">
+        <h2>Enter Your Name</h2>
+        <form id="nameForm"  class="mb-3">
+            <input type="text" id="nameInput" class="form-control" placeholder="Your Name" required>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+  </div>
+       
+    </div>
+
+    <div id="popup" class="popup">
+        <h2 id="popupMessage"></h2>
+        <button id="closePopup" class="btn btn-danger">Close</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show splash screen for 5 seconds, then show the main content
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 4000);
+        };
+
+        // Handle the form submission
+        document.getElementById('nameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('nameInput').value;
+            localStorage.setItem('userName', name);
+
+            document.getElementById('main-content').classList.add('blur-background');
+            document.getElementById('popupMessage').textContent = `Happy Independence Day, ${name}!, On this day, let’s rejoice in the freedom we enjoy and the opportunities it brings. `;
+            document.getElementById('popup').style.display = 'block';
+        });
+
+        // Close the popup and clear local storage
+        document.getElementById('closePopup').addEventListener('click', function() {
+            localStorage.removeItem('userName');
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('main-content').classList.remove('blur-background');
+        });
+    </script>
+</body>
+</html>
