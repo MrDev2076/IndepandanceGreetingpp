@@ -124,12 +124,12 @@
 </head>
 <body>
     <div id="splash-screen" class="font-noto">
-        <div>
-            <img src="https://packetprep.com/storage/prep/assets/favicon-min.webp" alt="" width="80" class="rounded-3 pp">
-            <h1 id="typing-text" class="text- text-warning text-start">Welcome To <br> &nbsp; The Celebration of <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic Day. <br></h1>
-            <h1 id="typing-text"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Proud to be an Indian.. <br></h1>
-        </h1>
-        </div>
+        <div class="d1" style="width: 600px;">
+    <b>On this Republic Day,</b> <br> we celebrate the adoption of our Constitution, which stands as a symbol of justice, equality, and liberty for every citizen of India. Let us honor the vision of our leaders who laid the foundation of a sovereign, democratic, and united nation.
+    <br><br>
+    <b>As we salute our tricolor,</b> <br>may we reaffirm our commitment to uphold the values enshrined in our Constitution. Here's to the spirit of unity, the strength of our democracy, and the hope for a prosperous and inclusive India. Jai Hind!
+</div>
+
     </div>
 
     <div id="main-content" class="container bg-gradient bg-dark rounded text-left shadow-lg text-white font-monospace ">
@@ -173,7 +173,7 @@
             localStorage.setItem('userName', name);
 
             document.getElementById('main-content').classList.add('blur-background');
-            document.getElementById('popupMessage').textContent = `Happy Independence Day, ${name}!, On this day, let’s rejoice in the freedom we enjoy and the opportunities it brings. `;
+            document.getElementById('popupMessage').textContent = `Happy Republic Day, ${name}!, On this day, let’s rejoice in the freedom we enjoy and the opportunities it brings. `;
             document.getElementById('popup').style.display = 'block';
         });
 
